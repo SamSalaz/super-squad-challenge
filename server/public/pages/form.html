@@ -3,16 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Form</title>
+    <title>New Hero!</title>
   </head>
   <body>
-    <h1>Contact Form</h1>
-    <form action="/submit-form" method="POST">
-      <label for="name">Name:</label>
+    <h1>Super Hero!</h1>
+    <form action="/hero-form" method="POST">
+      <label for="name">Hero Name:</label>
       <input type="text" id="name" name="name" required /><br /><br />
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required /><br /><br />
-      <label for="message">Message:</label><br />
+      <!-- REMEBER THAT THIS IS FOR "email" AND THE HERO WORLD NAME "universe" -->
+      <label for="universe">Hero World:</label>
+      <input type="universe" id="universe" name="universe" required /><br /><br />
+      <label for="message">Message to the citizens:</label><br />
       <textarea
         id="message"
         name="message"
@@ -24,18 +25,20 @@
       <input type="submit" value="Submit" />
     </form>
     <h1>User Management</h1>
+    <!-- Current email and new email changed to: UNIVERSE INSTEAD OF EMAIL AT THE END -->
+    <!-- current name and new name changed to: HERO NAME instead of NAME -->
     <form id="updateForm">
-      <label for="currentName">Current name:</label>
+      <label for="currentName">Current Hero Name:</label>
       <input type="text" id="currentName" required /><br /><br />
-      <label for="currentEmail">Current email:</label>
-      <input type="email" id="currentEmail" required /><br /><br />
-      <label for="newName">New name:</label>
+      <label for="currentUniverse">Current World:</label>
+      <input type="universe" id="currentUniverse" required /><br /><br />
+      <label for="newName">New Hero Name:</label>
       <input type="text" id="newName" required /><br /><br />
-      <label for="newEmail">New email:</label>
-      <input type="email" id="newEmail" required /><br /><br />
-      <button type="submit">Update User</button>
+      <label for="newUniverse">New World:</label>
+      <input type="universe" id="newUniverse" required /><br /><br />
+      <button type="submit">Update HERO</button>
     </form>
-    <h1>Show Users</h1>
+    <h1>Show Hero</h1>
     <table id="usersTable">
       <thead>
         <tr>

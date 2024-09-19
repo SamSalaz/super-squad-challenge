@@ -44,7 +44,7 @@ app.get('/form', (req, res) => {
 });
 
 // Form submission route
-app.post('/submit-form', async (req, res) => {
+app.post('/hero-form', async (req, res) => {
     try {
         const { name, email, message } = req.body;
 
