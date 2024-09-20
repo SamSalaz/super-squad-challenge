@@ -56,18 +56,18 @@
         .addEventListener("submit", async (e) => {
           e.preventDefault();
           const currentName = document.getElementById("currentName").value;
-          const currentEmail = document.getElementById("currentEmail").value;
+          const currentUniverse = document.getElementById("currentUniverse").value;
           const newName = document.getElementById("newName").value;
-          const newEmail = document.getElementById("newEmail").value;
+          const newUniverse = document.getElementById("newUniverse").value;
           try {
             const response = await fetch(
-              `/update-user/${currentName}/${currentEmail}`,
+              `/update-user/${currentName}/${currentUniverse}`,
               {
                 method: "PUT",
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ newName, newEmail }),
+                body: JSON.stringify({ newName, newUniverse }),
               }
             );
             const data = await response.json();
