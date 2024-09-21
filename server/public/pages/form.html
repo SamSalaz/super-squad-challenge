@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>Super Hero!</h1>
-    <form action="/hero-form" method="POST">
+    <form action="/heroForm" method="POST">
       <label for="name">Hero Name:</label>
       <input type="text" id="name" name="name" required /><br /><br />
       <!-- REMEBER THAT THIS IS FOR "email" AND THE HERO WORLD NAME "universe" -->
@@ -24,7 +24,7 @@
       ><br /><br />
       <input type="submit" value="Submit" />
     </form>
-    <h1>User Management</h1>
+    <h1>superheroes Management</h1>
     <!-- Current email and new email changed to: UNIVERSE INSTEAD OF EMAIL AT THE END -->
     <!-- current name and new name changed to: HERO NAME instead of NAME -->
     <form id="updateForm">
@@ -39,15 +39,15 @@
       <button type="submit">Update HERO</button>
     </form>
     <h1>Show Hero</h1>
-    <table id="usersTable">
+    <table id="superheroesTable">
       <thead>
         <tr>
-          <th>User Name</th>
-          <th>User Email</th>
+          <th>Hero Name</th>
+          <th>Hero Universe</th>
         </tr>
       </thead>
-      <tbody id="userTableBody">
-        <!-- data of users will be rendered here -->
+      <tbody id="superheroesTableBody">
+        <!-- data of superheroes will be rendered here -->
       </tbody>
     </table>
     <script>
@@ -61,7 +61,7 @@
           const newUniverse = document.getElementById("newUniverse").value;
           try {
             const response = await fetch(
-              `/update-user/${currentName}/${currentUniverse}`,
+              `/update-superheroe/${currentName}/${currentUniverse}`,
               {
                 method: "PUT",
                 headers: {
@@ -75,41 +75,41 @@
             renderUsers();
             // alert("Message is: " + data.message);
           } catch (error) {
-            alert("Error updating user: " + error.message);
+            alert("Error updating superheroe: " + error.message);
           }
         });
-      async function fetchUsers() {
+      async function fetchSuperheroes() {
         try {
-          const response = await fetch("/users");
+          const response = await fetch("/superheroes");
           if (!response.ok) {
-            throw new Error("Error fetching users. Response not ok");
+            throw new Error("Error fetching superheroes. Response not ok");
           }
           // there could be an error getting response/fetching the endpoint
           console.log(response);
-          const users = await response.json();
+          const superheroes = await response.json();
           // there could be an error parsing the response
           // console.log(users);
-          return users;
+          return superheroes;
         } catch (error) {
           console.error("There was a problem");
           console.error(error);
         }
       }
 
-      async function renderUsers() {
-        const tableBody = document.getElementById("userTableBody");
+      async function renderSuperheroes() {
+        const tableBody = document.getElementById("superheroesTableBody");
         tableBody.innerHTML = "";
         try {
-          const users = await fetchUsers();
-          if (Array.isArray(users) && users.length > 0) {
-            users.forEach((user) => {
-              const row = `<tr><td>${user.name}</td><td>${user.email}</td></tr>`;
+          const superheroes = await fetchSuperheroes();
+          if (Array.isArray(superheroes) && superheroes.length > 0) {
+            superheroes.forEach((superheroe) => {
+              const row = `<tr><td>${superheroe.name}</td><td>${superheroe.universe}</td></tr>`;
               tableBody.innerHTML += row;
             });
           }
         } catch (error) {}
       }
-      document.addEventListener("DOMContentLoaded", renderUsers);
+      document.addEventListener("DOMContentLoaded", renderSuperheroes);
     </script>
   </body>
 </html>
